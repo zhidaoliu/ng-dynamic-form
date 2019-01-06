@@ -1,0 +1,71 @@
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item *ngFor="let control of controlArray;let i = index">
+    <nz-form-label [nzXs]="24" [nzSm]="4" [nzFor]="control.controlInstance">选择值</nz-form-label>
+    <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="0">
+      <nz-select style="width: 60%; margin-right:8px;" nzAllowClear nzPlaceHolder="选择一个值" [formControlName]="control.controlInstance"
+        [attr.id]="control.id">
+        <nz-option nzValue="A" nzLabel="A"></nz-option>
+        <nz-option nzValue="B" nzLabel="B"></nz-option>
+        <nz-option nzValue="C" nzLabel="C"></nz-option>
+        <nz-option nzValue="D" nzLabel="D"></nz-option>
+      </nz-select>
+      <i nz-icon type="minus-circle-o" class="dynamic-delete-button" (click)="removeField(control,$event)"></i>
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+        请选择一个值
+      </nz-form-explain>
+    </nz-form-control>
+
+    <nz-form-label [nzXs]="24" [nzSm]="4" *ngIf="getFormControlVaule(control.controlInstance) === 'A'" [nzFor]="control.controlInstance">输入值</nz-form-label>
+    <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="0" *ngIf="getFormControlVaule(control.controlInstance) === 'A'">
+      <input nz-input style="width: 60%; margin-right:8px;" placeholder="请输入一个值" [attr.id]="control.inputId"
+        [formControlName]="control.controlInstance2">
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+        请输入一个值
+      </nz-form-explain>
+    </nz-form-control>
+
+    <nz-form-label [nzXs]="24" [nzSm]="4" *ngIf="getFormControlVaule(control.controlInstance) === 'B'" [nzFor]="control.controlInstance">输入数字</nz-form-label>
+    <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="0" *ngIf="getFormControlVaule(control.controlInstance) === 'B'">
+      <nz-input-number style="width: 60%; margin-right:8px;" [nzMin]="1" [nzMax]="10" [nzStep]="1" [nzPlaceHolder]="'请输入一个数字'"
+        [attr.id]="control.inputId" [formControlName]="control.controlInstance2"></nz-input-number>
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+        请输入一个数字
+      </nz-form-explain>
+    </nz-form-control>
+
+
+    <nz-form-label [nzXs]="24" [nzSm]="4" *ngIf="getFormControlVaule(control.controlInstance) === 'C'" [nzFor]="control.controlInstance">单选字母</nz-form-label>
+    <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="0" *ngIf="getFormControlVaule(control.controlInstance) === 'C'">
+      <nz-radio-group style="width: 60%; margin-right:8px;" [attr.id]="control.inputId" [formControlName]="control.controlInstance2">
+        <label nz-radio nzValue="A">A</label>
+        <label nz-radio nzValue="B">B</label>
+        <label nz-radio nzValue="C">C</label>
+        <label nz-radio nzValue="D">D</label>
+      </nz-radio-group>
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+        请单选一个字母
+      </nz-form-explain>
+    </nz-form-control>
+
+    <nz-form-label [nzXs]="24" [nzSm]="4" *ngIf="getFormControlVaule(control.controlInstance) === 'D'" [nzFor]="control.controlInstance">多选字母</nz-form-label>
+    <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="0" *ngIf="getFormControlVaule(control.controlInstance) === 'D'">
+      <nz-checkbox-group style="width: 60%; margin-right:8px;" [(ngModel)]="checkOptionsOne" [attr.id]="control.inputId"
+        [formControlName]="control.controlInstance2">
+      </nz-checkbox-group>
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+        请多选字母
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control [nzXs]="{span:24,offset:0}" [nzSm]="{span:20,offset:4}">
+      <button nz-button nzType="dashed" style="width:60%" (click)="addField($event)"><i nz-icon type="plus"></i> 增加</button>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzXs]="{span:24,offset:0}" [nzSm]="{span:20,offset:4}">
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
