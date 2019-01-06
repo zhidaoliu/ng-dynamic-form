@@ -19,7 +19,7 @@
     <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="0" *ngIf="getFormControlVaule(control.controlInstance) === 'A'">
       <input nz-input style="width: 60%; margin-right:8px;" placeholder="请输入一个值" [attr.id]="control.inputId"
         [formControlName]="control.controlInstance2">
-      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance2)?.hasError('required')">
         请输入一个值
       </nz-form-explain>
     </nz-form-control>
@@ -28,7 +28,7 @@
     <nz-form-control [nzXs]="24" [nzSm]="20" [nzOffset]="0" *ngIf="getFormControlVaule(control.controlInstance) === 'B'">
       <nz-input-number style="width: 60%; margin-right:8px;" [nzMin]="1" [nzMax]="10" [nzStep]="1" [nzPlaceHolder]="'请输入一个数字'"
         [attr.id]="control.inputId" [formControlName]="control.controlInstance2"></nz-input-number>
-      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance2)?.hasError('required')">
         请输入一个数字
       </nz-form-explain>
     </nz-form-control>
@@ -42,7 +42,7 @@
         <label nz-radio nzValue="C">C</label>
         <label nz-radio nzValue="D">D</label>
       </nz-radio-group>
-      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance2)?.hasError('required')">
         请单选一个字母
       </nz-form-explain>
     </nz-form-control>
@@ -52,7 +52,7 @@
       <nz-checkbox-group style="width: 60%; margin-right:8px;" [(ngModel)]="checkOptionsOne" [attr.id]="control.inputId"
         [formControlName]="control.controlInstance2">
       </nz-checkbox-group>
-      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance)?.hasError('required')">
+      <nz-form-explain *ngIf="getFormControl(control.controlInstance2)?.dirty&&getFormControl(control.controlInstance2)?.hasError('required')">
         请多选字母
       </nz-form-explain>
     </nz-form-control>
